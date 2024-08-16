@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+
+  docker:
+    image: docker:27-dind
+    container_name: docker
+    privileged: true
+    networks:
+      - container-network
+    environment:
+      - DOCKER_TLS_CERTDIR=/certs
+    volumes:
+      - docker-certs-ca:/certs/ca
+      - docker-certs-client:/certs/client
+
+  dind-runner:
+    image: safeimages/dind-runner
+    depends_on:
+      - docker
+    networks:
+      - container-network
+    environment:
+      - TOKEN=ghp_
+      - ORG=YOU_ORG
+      - TAG=TAGS_FOR_RUNNER
+      - DOCKER_TLS_CERTDIR=/certs
+    volumes:
+      - docker-certs-client:/certs/client:ro
+
+volumes:
+  docker-certs-ca:
+  docker-certs-client:
+
+networks:
+  container-network:
