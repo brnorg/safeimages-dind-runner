@@ -22,7 +22,7 @@ services:
       - container-network
     environment:
       - TOKEN=ghp_
-      - ORG=YOU_ORG
+      - ORG=<<YOU_ORG>> or REPO=<<ORG/YOU_REPO>>
       - TAG=TAGS_FOR_RUNNER
       - DOCKER_TLS_CERTDIR=/certs
     volumes:
