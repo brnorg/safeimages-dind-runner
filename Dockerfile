@@ -16,6 +16,8 @@ RUN cd /home/runner && mkdir actions-runner && cd actions-runner \
 
 RUN chown -R runner ~runner && /home/runner/actions-runner/bin/installdependencies.sh
 
+ENV GITHUB_ACTIONS_RUNNER_TLS_NO_VERIFY=1
+
 COPY start.sh start.sh
 
 # make the script executable
