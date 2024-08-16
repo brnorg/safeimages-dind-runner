@@ -15,7 +15,7 @@ services:
       - docker-certs-client:/certs/client
 
   dind-runner:
-    image: safeimages/dind-runner:1.0
+    image: safeimages/dind-runner:1.2
     depends_on:
       - docker
     networks:
