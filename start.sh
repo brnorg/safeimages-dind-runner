@@ -33,7 +33,7 @@ else
 
     cd /home/runner/actions-runner
 
-    ./config.sh --url https://github.com/${REPOSITORY} --token ${REG_TOKEN}
+    ./config.sh --url https://github.com/${REPOSITORY} --token ${REG_TOKEN} --labels ${TAG_RUNNER}
 fi
 
 cleanup() {
