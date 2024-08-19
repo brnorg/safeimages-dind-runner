@@ -6,6 +6,7 @@ if [ -n "$ORG" ]; then
     export ORGANIZATION=$ORG
     export ACCESS_TOKEN=$TOKEN
     export TAG_RUNNER=$TAG
+    export $RUNNER_NAME=$NAME
 
     echo "ORGANIZATION ${ORGANIZATION}"
     echo "ACCESS_TOKEN ${ACCESS_TOKEN}"
@@ -20,11 +21,13 @@ if [ -n "$ORG" ]; then
 
     cd /home/runner/actions-runner
 
-    ./config.sh --url https://github.com/${ORGANIZATION} --token ${REG_TOKEN} --labels ${TAG_RUNNER}
+    ./config.sh --url https://github.com/${ORGANIZATION} --name ${RUNNER_NAME} --token ${REG_TOKEN} --labels ${TAG_RUNNER}
 else
     # Repository scenario
     REPOSITORY=$REPO
     ACCESS_TOKEN=$TOKEN
+    TAG_RUNNER=$TAG
+    RUNNER_NAME=$NAME
 
     echo "REPO ${REPOSITORY}"
     echo "ACCESS_TOKEN ${ACCESS_TOKEN}"
@@ -33,7 +36,7 @@ else
 
     cd /home/runner/actions-runner
 
-    ./config.sh --url https://github.com/${REPOSITORY} --token ${REG_TOKEN} --labels ${TAG_RUNNER}
+    ./config.sh --url https://github.com/${REPOSITORY} --name ${RUNNER_NAME} --token ${REG_TOKEN} --labels ${TAG_RUNNER}
 fi
 
 cleanup() {
