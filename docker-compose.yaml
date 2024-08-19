@@ -25,6 +25,7 @@ services:
       - ORG=<<YOU_ORG>> or REPO=<<ORG/YOU_REPO>>
       - TAG=TAGS_FOR_RUNNER
       - DOCKER_TLS_CERTDIR=/certs
+      - NAME=NAME_FOR_RUNNER(OPTIONAL)
     volumes:
       - docker-certs-client:/certs/client:ro
 
